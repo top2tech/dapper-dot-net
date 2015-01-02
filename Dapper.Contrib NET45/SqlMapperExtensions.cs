@@ -398,6 +398,12 @@ namespace Dapper.Contrib.Extensions
             for (var i = 0; i < nonIdProps.Count(); i++)
             {
                 var property = nonIdProps.ElementAt(i);
+				//To support merge update, don't generate sql if a property is null in an entity.
+				//Otherwise the sql statement will set property=null, which will override the existing property's value in the database.
+                if ( property.GetValue(entityToUpdate) == null )
+                {
+                    continue;
+                }
                 sb.AppendFormat("{0} = @{1}", property.Name, property.Name);
                 if (i < nonIdProps.Count() - 1)
                     sb.AppendFormat(", ");
