@@ -50,6 +50,7 @@
       <Link>SqlMapper.cs</Link>
     </Compile>
     <Compile Include="SqlMapperAsync.cs" />
+    <Compile Include="SqlMapperExtension.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
